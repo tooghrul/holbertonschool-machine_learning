@@ -6,7 +6,3 @@ def from_numpy(array):
     col_names = [chr(65+i) for i in range(col_count)]
     df = pd.DataFrame(array, columns=col_names)
     return df
-
-
-if __name__ == "__main__":
-    from_numpy(array)
