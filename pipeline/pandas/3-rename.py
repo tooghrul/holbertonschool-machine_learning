@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """
-task 3 - renaming column
+Task 3: Rename
 """
 import pandas as pd
 
 
 def rename(df):
     """
-    renames the timestamp column to Datetime, converts to datetime values,
+    Renames the Timestamp column to Datetime, converts to datetime values,
     and selects only Datetime and Close columns.
-    args:
+    Args:
         df: pd.DataFrame
-    returns:
+    Returns:
         The modified pd.DataFrame
     """
     df = df.rename(columns={'Timestamp': 'Datetime'})

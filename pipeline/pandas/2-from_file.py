@@ -14,4 +14,4 @@ def from_file(filename, delimiter):
     returns:
         The loaded pd.DataFrame
     """
-    return pd.read_csv(filename, sep=delimiter)i
+    return pd.read_csv(filename, sep=delimiter)
