@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
-Task 7: Sort
+Task 8: Prune
 """
 
 
-def high(df):
+def prune(df):
     """
-    Sorts the dataframe by the High price in descending order.
+    Removes any entries where Close has NaN values.
     Args:
         df: pd.DataFrame
     Returns:
-        The sorted pd.DataFrame
+        The modified pd.DataFrame
     """
-    return df.sort_values('High', ascending=False)
+    return df.dropna(subset=['Close'])

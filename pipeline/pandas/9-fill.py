@@ -2,7 +2,6 @@
 """
 Task 9: Fill
 """
-import pandas as pd
 
 
 def fill(df):
