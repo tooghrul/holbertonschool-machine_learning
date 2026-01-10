@@ -19,7 +19,7 @@ def scatter():
 
     # Plot scatter with magenta points ('m')
     plt.scatter(x, y, c='m')
-    
+
     # Set labels and title
     plt.xlabel('Height (in)')
     plt.ylabel('Weight (lbs)')

@@ -18,7 +18,7 @@ def change_scale():
 
     # Plot data
     plt.plot(x, y)
-    
+
     # Set y-axis to logarithmic scale
     plt.yscale('log')
 
