@@ -2,7 +2,6 @@
 """
 Task 6: Flip it and Switch it
 """
-import pandas as pd
 
 
 def flip_switch(df):
