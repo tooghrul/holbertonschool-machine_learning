@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
+"""
+Task 1: From Dictionary
+"""
 import pandas as pd
 
-arr = [{"First":0.0, "Second": "one"}, 
-       {"First":0.5, "Second": "two"},
-       {"First": 1.0, "Second": "three"},
-       {"First": 1.5, "Second": "four"}]
 
-df = pd.DataFrame(arr, rows = ['A', 'B', 'C', 'D'])
+data = {
+    "First": [0.0, 0.5, 1.0, 1.5],
+    "Second": ["one", "two", "three", "four"]
+}
+
+df = pd.DataFrame(data, index=["A", "B", "C", "D"])
 

@@ -1,9 +1,19 @@
 #!/usr/bin/env python3
+"""
+Task 0: From Numpy
+"""
 import pandas as pd
-'''Importing pandas module'''
+
 
 def from_numpy(array):
-    '''Implementation'''
-    num_cols = array.shape[1]
-    col_names = [chr(65 + i) for i in range(num_cols)]
-    return pd.DataFrame(array, columns=col_names)
+    """
+    Creates a pd.DataFrame from a np.ndarray
+    Args:
+        array: np.ndarray
+    Returns:
+        The newly created pd.DataFrame
+    """
+    # Generate alphabetical column labels: A, B, C...
+    cols = [chr(65 + i) for i in range(array.shape[1])]
+    return pd.DataFrame(array, columns=cols)
+
