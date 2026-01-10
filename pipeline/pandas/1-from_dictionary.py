@@ -11,4 +11,3 @@ data = {
 }
 
 df = pd.DataFrame(data, index=["A", "B", "C", "D"])
-

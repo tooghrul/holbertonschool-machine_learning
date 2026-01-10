@@ -16,4 +16,3 @@ def from_numpy(array):
     # Generate alphabetical column labels: A, B, C...
     cols = [chr(65 + i) for i in range(array.shape[1])]
     return pd.DataFrame(array, columns=cols)
-
