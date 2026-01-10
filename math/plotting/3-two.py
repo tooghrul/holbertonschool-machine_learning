@@ -30,7 +30,7 @@ def two():
     plt.title('Exponential Decay of Radioactive Elements')
     plt.xlim(0, 20000)
     plt.ylim(0, 1)
-    
+
     # Add legend to upper right corner
     plt.legend(loc='upper right')
     plt.show()
