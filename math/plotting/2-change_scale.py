@@ -21,7 +21,7 @@ def change_scale():
     
     # Set y-axis to logarithmic scale
     plt.yscale('log')
-    
+
     # Set labels, title, and x-axis limit
     plt.xlabel('Time (years)')
     plt.ylabel('Fraction Remaining')

@@ -20,10 +20,10 @@ def two():
 
     # Plot y1 (C-14) as dashed red line
     plt.plot(x, y1, 'r--', label='C-14')
-    
+
     # Plot y2 (Ra-226) as solid green line
     plt.plot(x, y2, 'g-', label='Ra-226')
-    
+
     # Set labels, title, and limits
     plt.xlabel('Time (years)')
     plt.ylabel('Fraction Remaining')

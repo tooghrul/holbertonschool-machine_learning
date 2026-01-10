@@ -16,7 +16,7 @@ def frequency():
 
     # Plot histogram with bins every 10 units and black outline
     plt.hist(student_grades, bins=range(0, 101, 10), edgecolor='black')
-    
+
     # Set labels and title
     plt.xlabel('Grades')
     plt.ylabel('Number of Students')
