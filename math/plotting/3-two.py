@@ -33,5 +33,4 @@ def two():
     
     # Add legend to upper right corner
     plt.legend(loc='upper right')
-    
     plt.show()
