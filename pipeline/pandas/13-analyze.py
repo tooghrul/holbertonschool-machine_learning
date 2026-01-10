@@ -2,7 +2,6 @@
 """
 Task 13: Analyze
 """
-import pandas as pd
 
 
 def analyze(df):

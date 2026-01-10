@@ -21,8 +21,7 @@ def hierarchy(df1, df2):
 
     # Filter ranges 1417411980 to 1417417980
     t_start = 1417411980
-    t_end = 1417417980
-    
+    t_end = 1417417980    
     df1_sub = df1.loc[t_start:t_end]
     df2_sub = df2.loc[t_start:t_end]
 
