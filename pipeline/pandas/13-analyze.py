@@ -14,5 +14,5 @@ def analyze(df):
     """
     # Drop Timestamp if it exists as a column (not index)
     if 'Timestamp' in df.columns:
-        df = df.drop(columns=['Timestamp']) 
+        df = df.drop(columns=['Timestamp'])
     return df.describe()
