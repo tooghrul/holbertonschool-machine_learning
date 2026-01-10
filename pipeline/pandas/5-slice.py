@@ -2,7 +2,6 @@
 """
 Task 5: Slice
 """
-import pandas as pd
 
 
 def slice(df):
