@@ -2,7 +2,6 @@
 """
 Task 4: To Array
 """
-import pandas as pd
 
 
 def array(df):
@@ -14,4 +13,4 @@ def array(df):
     Returns:
         The numpy.ndarray
     """
-    return numpy.ndarray(buffer = df[['High', 'Close']].tail(10))
+    return df[['High', 'Close']].tail(10).to_numpy()
