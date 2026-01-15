@@ -2,7 +2,7 @@
 """The list of coefficients of polynomials"""
 def poly_derivative(poly):
     """Implementation"""
-    if not isinstance(poly, list):
+    if not isinstance(poly, list) or len(poly) == 0:
         return None
 
     new_poly = [0 for i in range(len(poly)-1)]
