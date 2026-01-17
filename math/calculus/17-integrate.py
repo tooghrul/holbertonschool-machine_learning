@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """17-integrate"""
 
+
 def poly_integral(poly, C=0):
+    """The implementation"""
     if not isinstance(poly, list) or not isinstance(C, int):
         return None
     if poly == []:
@@ -21,4 +23,3 @@ def poly_integral(poly, C=0):
         result.pop()
 
     return result
-
