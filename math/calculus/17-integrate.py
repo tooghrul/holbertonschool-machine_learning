@@ -2,10 +2,23 @@
 """17-integrate"""
 
 def poly_integral(poly, C=0):
+    """The implementation"""
     if not (isinstance(poly, list) or isinstance(C, int)):
         return None
-    
-    new_poly = [0 for i in range(len(poly) + 1)]
-    for i in range(1, len(new_poly)):
-        new_poly[i] = poly[i-1]/(i+1)
-    return new_poly
+    if not poly:
+        return None
+
+    result = [C]
+
+    for i, coeff in enumerate(poly):
+        if not isinstance(coeff, (int, float)):
+            return None
+        value = coeff / (i + 1)
+        if value.is_integer():
+            value = int(value)
+        result.append(value)
+ 
+    while len(result) > 1 and result[-1] == 0:
+        result.pop()
+
+    return result
