@@ -5,7 +5,7 @@ def poly_integral(poly, C=0):
     """The implementation"""
     if not (isinstance(poly, list) or isinstance(C, int)):
         return None
-    if not poly:
+    if len(poly) == 0:
         return None
 
     result = [C]
