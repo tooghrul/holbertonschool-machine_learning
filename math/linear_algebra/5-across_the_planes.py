@@ -12,7 +12,17 @@ def add_matrices2D(mat1, mat2):
             size.append(len(matrix))
             matrix = matrix[0]
             return size + matrix_shape(matrix)
-    if (matrix_shape(mat1) != matrix_shape(mat2)) or ((len(mat1[0]) == 0) and (len(mat2[0]) == 0)):
+
+    if not isinstance(mat1, list) or not isinstance(mat2, list):
+        return None
+
+    if mat1 == [] and mat2 == []:
+        return []
+
+    if not mat1 or not mat2:
+        return None
+
+    if (matrix_shape(mat1) != matrix_shape(mat2)):
         return None
 
     new_matrix = [[mat1[i][j]+mat2[i][j] for j in range(len(mat1[0]))] for i in range(len(mat1))]
