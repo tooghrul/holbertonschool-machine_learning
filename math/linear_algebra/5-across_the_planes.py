@@ -6,6 +6,10 @@ def add_matrices2D(mat1, mat2):
     """Task 5"""
     if len(mat1) == [] or len(mat2) == []:
         return None
+
+    if mat1 == [[]] or mat2 == [[]]:
+        return None
+
     def matrix_shape(matrix):
         size = []
         if not isinstance(matrix, list):
