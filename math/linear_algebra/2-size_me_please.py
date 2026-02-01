@@ -7,7 +7,4 @@ def matrix_shape(matrix):
     else:
         size.append(len(matrix))
         matrix = matrix[0]
-        return matrix_shape(matrix)
-
-if __name__ == "__main__":
-    matrix_shape(matrix)
+        return size + matrix_shape(matrix)
