@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Line up"""
 
+
 def add_arrays(arr1, arr2):
     """Line up"""
     if len(arr1) != len(arr2):
