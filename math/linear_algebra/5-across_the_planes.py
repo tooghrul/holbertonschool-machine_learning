@@ -16,8 +16,8 @@ def add_matrices2D(mat1, mat2):
     if not isinstance(mat1, list) or not isinstance(mat2, list):
         return None
 
-    if mat1 == [] and mat2 == []:
-        return []
+    if mat1 == [[]] and mat2 == [[]]:
+        return None
 
     if not mat1 or not mat2:
         return None
