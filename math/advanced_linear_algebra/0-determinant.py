@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Determinant"""
 
+
 def determinant(matrix):
     """Implementation"""
     def is_square(matrix):
@@ -36,10 +37,11 @@ def determinant(matrix):
     if matrix is [[]]:
         return 1
 
-    match size:
-        case [1,1]:
-            return matrix[0][0]
-        case [2,2]:
-            return det2(matrix)
-        case [3,3]:
-            return det3(matrix)
+    if size is [1,1]:
+        return matrix[0][0]
+
+    if size is [2,2]:
+        return det2(matrix)
+
+    if size is [3,3]:
+        return det3(matrix)
