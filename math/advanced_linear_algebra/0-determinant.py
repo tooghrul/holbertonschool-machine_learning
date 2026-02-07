@@ -33,13 +33,12 @@ def determinant(matrix):
             minor = [[matrix[j][k] for k in range(3) if k != i] for j in range(1,3)]
             det += ((-1)**i) * matrix[0][i] * det2(minor)
         return det
+    if matrix is [[]]:
+        return 1
 
     is_matrix(matrix)
     is_square(matrix)
     size = get_size(matrix)
-    if matrix is [[]]:
-        return 1
-
     if size is [1,1]:
         return matrix[0][0]
 
