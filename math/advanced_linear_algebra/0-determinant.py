@@ -24,7 +24,7 @@ def determinant(matrix):
 
     def def2(matrix):
         """Calculating the determinant of 2x2 matrix"""
-        return matrix[0][0]*matrix[1][1] - matrix[1][0]*matrix[1][1]
+        return matrix[0][0]*matrix[1][1] - matrix[0][1]*matrix[1][0]
 
     def def3(matrix):
         """Calculating the determinant of 3x3 matrix"""
