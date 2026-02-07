@@ -6,7 +6,7 @@ def determinant(matrix):
     """Implementation"""
     def is_square(matrix):
         """Checking if the matrix is square"""
-        if len(matrix) != len(matrix[0]) or len(matrix) == 0:
+        if len(matrix) != len(matrix[0]):
             raise ValueError("matrix must be a square matrix")
 
     def is_matrix(matrix):
