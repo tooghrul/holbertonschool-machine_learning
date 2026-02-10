@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-import math
-
-
 class Poisson:
     """Represents a Poisson distribution"""
 
@@ -22,14 +19,18 @@ class Poisson:
         self.lambtha = float(sum(data) / len(data))
 
     def pmf(self, k):
-        """
-        Calculates the PMF for a given number of successes
-        """
+        """Calculates the PMF for a given number of successes"""
         if not isinstance(k, int):
             k = int(k)
 
         if k < 0:
             return 0
 
-        # PMF formula: (λ^k * e^(-λ)) / k!
-        return (self.lambtha ** k * math.exp(-self.lambtha)) / math.factorial(k)
+        # factorial(k)
+        fact = 1
+        for i in range(1, k + 1):
+            fact *= i
+
+        # Poisson PMF: (λ^k * e^(-λ)) / k!
+        e = 2.718281828459045
+        return (self.lambtha ** k * (e ** (-self.lambtha))) / fact
