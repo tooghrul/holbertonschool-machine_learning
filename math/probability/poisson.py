@@ -1,68 +1,40 @@
-#!/usr/bin/env python3
+bj#!/usr/bin/env python3
+""" This module will define a class named Poisson """
 
 
-class Poisson:
-    """
-    Represents a Poisson distribution
-    """
-
+class Poisson():
+    """ This class will demonstrate a poisson distribution """
     def __init__(self, data=None, lambtha=1.):
-        """
-        Initializes the Poisson distribution
-
-        data: list of observed data points
-        lambtha: expected number of occurrences
-        """
+        """ Function for initializing class """
         if data is None:
             if lambtha <= 0:
-                raise ValueError("lambtha must be a positive value")
-            self.lambtha = float(lambtha)
-            return
-
-        if not isinstance(data, list):
-            raise TypeError("data must be a list")
-
-        if len(data) < 2:
-            raise ValueError("data must contain multiple values")
-
-        self.lambtha = float(sum(data) / len(data))
+                raise ValueError('lambtha must be a positive value')
+            self.lambtha = lambtha
+        elif not isinstance(data, list):
+            raise TypeError('data must be a list')
+        elif len(data) < 2:
+            raise ValueError('data must contain multiple values')
+        else:
+            self.lambtha = sum(data) / len(data)
 
     def pmf(self, k):
-        """
-        Calculates the PMF for a given number of successes
-
-        k: number of successes
-        """
+        """ Calculates the value of PMF for given num of success """
         if not isinstance(k, int):
             k = int(k)
-
         if k < 0:
             return 0
-
-        # Calculate factorial of k
-        fact = 1
-        for i in range(1, k + 1):
-            fact *= i
-
-        # Euler's number approximation
-        e = 2.718281828459045
-
-        return (self.lambtha ** k * (e ** (-self.lambtha))) / fact
+        f = 1
+        for i in range(2, k+1):
+            f = f * i
+        return (self.lambtha ** k) * (2.7182818285 ** (-self.lambtha)) / f
 
     def cdf(self, k):
-        """
-        Calculates the CDF for a given number of successes
-
-        k: number of successes
-        """
+        """ CDF for a given number of successes """
         if not isinstance(k, int):
             k = int(k)
-
         if k < 0:
             return 0
-
-        cdf_value = 0
-        for i in range(0, k + 1):
-            cdf_value += self.pmf(i)
-
-        return cdf_value
+        cdf_val = 0
+        for i in range(0, k+1):
+            cdf_val += self.pmf(i)
+        return cdf_val
