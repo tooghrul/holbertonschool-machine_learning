@@ -2,6 +2,7 @@
 
 import numpy as np
 
+
 def likelihood(x, n, P):
     """
     Calculates the likelihood of obtaining this data given various
