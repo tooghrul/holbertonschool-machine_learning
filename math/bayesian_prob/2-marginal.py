@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-""" This module will define a function namd likelihood """
+""" This module will define a function named marginal """
 import numpy as np
 
 
-def likelihood(x, n, P):
-    """ Function for calculating likelihood of
-    obtaining data given probability of side effects
+def marginal(x, n, P, Pr):
+    """ Function for calculating marginal
+    probability of obtaining the data
     """
 
     def factorial(n):
@@ -23,7 +23,14 @@ def likelihood(x, n, P):
         raise ValueError('x cannot be greater than n')
     elif type(P) is not np.ndarray or P.ndim != 1:
         raise TypeError('P must be a 1D numpy.ndarray')
+    elif type(Pr) is not np.ndarray or Pr.shape != P.shape:
+        raise TypeError('Pr must be a numpy.ndarray with the same shape as P')
     elif np.max(P) > 1 or np.min(P) < 0:
         raise ValueError('All values in P must be in the range [0, 1]')
+    elif np.max(Pr) > 1 or np.min(Pr) < 0:
+        raise ValueError('All values in Pr must be in the range [0, 1]')
+    elif not np.isclose(np.sum(Pr), 1):
+        raise ValueError('Pr must sum to 1')
     C = factorial(n) / (factorial(x) * factorial(n - x))
-    return C * (P ** x) * ((1 - P) ** (n - x))
+    likelihood = C * (P ** x) * ((1 - P) ** (n - x))
+    return np.sum(likelihood * Pr)
