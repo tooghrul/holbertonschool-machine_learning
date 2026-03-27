@@ -11,6 +11,7 @@ It also provides functionality to retrieve all leaves from the tree.
 """
 import numpy as np
 
+
 class Node:
     """
     Represents an internal node in a decision tree.
