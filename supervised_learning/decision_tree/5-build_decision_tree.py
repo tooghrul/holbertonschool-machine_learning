@@ -16,8 +16,8 @@ class Node:
         self.is_root = is_root
         self.sub_population = None
         self.depth = depth
-        self.lower = {}  # lower bounds per feature
-        self.upper = {}  # upper bounds per feature
+        self.lower = {}
+        self.upper = {}
 
     def max_depth_below(self):
         """ Function for finding depth of the tree """
@@ -64,43 +64,52 @@ class Node:
             if child is None:
                 continue
 
-            # Copy parent bounds
             child.lower = self.lower.copy()
             child.upper = self.upper.copy()
 
-            # Update bounds for the splitting feature
             if self.feature is not None:
                 if child == self.left_child:
                     child.lower[self.feature] = self.threshold
                 else:
                     child.upper[self.feature] = self.threshold
 
-        # Recurse
         for child in [self.left_child, self.right_child]:
             if child is not None:
                 child.update_bounds_below()
 
     def update_indicator(self):
         """ update indicator """
+
         def is_large_enough(x):
             """ check if feature satisfies lower bound """
+            if not self.lower:
+                return np.ones(x.shape[0], dtype=bool)
+
             return np.all(
-                np.array([np.greater(x[:, key], self.lower[key])
-                         for key in self.lower.keys()]),
+                np.array([
+                    np.greater(x[:, key], self.lower[key])
+                    for key in self.lower.keys()
+                ]),
                 axis=0
             )
 
         def is_small_enough(x):
             """ check if feature satisfies upper bound """
+            if not self.upper:
+                return np.ones(x.shape[0], dtype=bool)
+
             return np.all(
-                np.array([np.less_equal(x[:, key], self.upper[key])
-                         for key in self.upper.keys()]),
+                np.array([
+                    np.less_equal(x[:, key], self.upper[key])
+                    for key in self.upper.keys()
+                ]),
                 axis=0
             )
 
-        self.indicator = lambda x: np.all(np.array(
-            [is_large_enough(x), is_small_enough(x)]
-            ), axis=0)
+        self.indicator = lambda x: np.all(
+            np.array([is_large_enough(x), is_small_enough(x)]),
+            axis=0
+        )
 
     def pred(self, x):
         """ Predict node """
@@ -111,8 +120,7 @@ class Node:
 
     def __str__(self):
         """ Print node for debugging """
-        s = f"Node(feature={self.feature}, threshold={self.threshold})"
-        return s
+        return f"Node(feature={self.feature}, threshold={self.threshold})"
 
 
 class Leaf(Node):
@@ -148,7 +156,8 @@ class Leaf(Node):
         """ Predict leaf """
         return self.value
 
-class Decision_Tree():
+
+class Decision_Tree:
     """ Class for implementing Decision Tree """
     def __init__(self, max_depth=10, min_pop=1, seed=0,
                  split_criterion="random", root=None):
@@ -189,7 +198,12 @@ class Decision_Tree():
         """ Faster predict """
         self.update_bounds()
         leaves = self.get_leaves()
-        for leaf in leaves :
-            leaf.update_indicator()          
-        self.predict = lambda A: np.sum(np.array([leaf.indicator(A) * leaf.value
-                                        for leaf in leaves]), axis=0)
+        for leaf in leaves:
+            leaf.update_indicator()
+        self.predict = lambda A: np.sum(
+            np.array([
+                leaf.indicator(A) * leaf.value
+                for leaf in leaves
+            ]),
+            axis=0
+        )
