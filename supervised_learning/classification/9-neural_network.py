@@ -7,7 +7,7 @@ class NeuralNetwork:
     """Neural network with one hidden layer for binary classification."""
 
     def __init__(self, nx, nodes):
-        """ Initialize NeuralNetwork """
+        """Initialize NeuralNetwork."""
         if not isinstance(nx, int):
             raise TypeError("nx must be an integer")
         if nx < 1:
@@ -56,16 +56,11 @@ class NeuralNetwork:
         return self.__A2
 
     def forward_prop(self, X):
-        """ Forward propagation """
-        z1 = self.__W1 @ X + self.__b1
-        self.__A1 = 1 / (1 + np.e**(-z1))
-        z2 = self.__W2 @ self.__A1 + self.__b2
-        self.__A2 = 1 / (1 + np.e**(-z2))
+        """Conduct forward propagation."""
+        z1 = np.matmul(self.__W1, X) + self.__b1
+        self.__A1 = 1 / (1 + np.exp(-z1))
+
+        z2 = np.matmul(self.__W2, self.__A1) + self.__b2
+        self.__A2 = 1 / (1 + np.exp(-z2))
 
         return self.__A1, self.__A2
-
-    def forward_prop(self, X):
-        """ Function for conducting forward propagation """
-        z = self.__W @ X + self.__b
-        self.__A = 1 / (1 + np.e**(-z))
-        return self.__A
