@@ -94,4 +94,3 @@ class DeepNeuralNetwork:
         cost = self.cost(Y, AL)
 
         return prediction, cost
-
